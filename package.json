@@ -1,7 +1,7 @@
 {
   "name": "primerservidorexpress",
   "version": "1.0.0",
-  "description": "",
+  "description": "Un servidor basado en NodeJS, que utiliza el framework de Back-End ExpressJS. El objetivo del proyecto es la construcción de una API Rest, el cual implementa el patrón de diseño MVC (Model-View-Controller)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
