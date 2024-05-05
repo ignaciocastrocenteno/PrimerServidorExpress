@@ -1,0 +1,14 @@
+# Excluding the 'node_modules' folder as can be re-imported on the client
+node_modules
+
+# Excluding the 'package-lock.json' file as can be rebuilt on the client
+package-lock.json
+
+# Excluding all temporary files for less bloating
+*.temp
+
+# Excluding all backlog files for less bloating
+*.log
+
+# Excluding all files with sensitive information about the project (eg. API keys, environment variables & passwords)
+*.env
