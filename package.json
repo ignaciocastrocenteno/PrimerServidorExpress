@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/ignaciocastrocenteno/PrimerServidorExpress/issues"
   },
-  "homepage": "https://github.com/ignaciocastrocenteno/PrimerServidorExpress#readme"
+  "homepage": "https://github.com/ignaciocastrocenteno/PrimerServidorExpress#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
