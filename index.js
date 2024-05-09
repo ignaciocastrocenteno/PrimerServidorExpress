@@ -9,7 +9,6 @@ const PORT = 8080;
 app.use(express.json());
 // Middleware para trabajar con datos enviados a través de URL
 app.use(express.urlencoded({extended: true}));
-// Si queremos renderizar al usuario
 
 // Diciéndole al servidor web que se encuentre a la escucha de peticiones HTTP sobre el puerto 8080 local
 app.listen(PORT, () => {
