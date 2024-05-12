@@ -7,7 +7,7 @@ import controller from "../controllers/users.controllers.js";
 
 const router = express.Router();
 
-/* Declaración de rutas para esta entidad '/users' - El archivo 'routes' sólo se encarga de declarar
+/* Declaración de rutas para este 'endpoint' /users - El archivo 'routes' sólo se encarga de declarar
 las rutas de la entidad, no de cómo estas funcionan. */
 router.get("/users", () => controller.getUsers);
 router.get("/users/:id", () => controller.getUserByID);
