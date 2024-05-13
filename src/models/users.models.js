@@ -3,31 +3,54 @@
 
 const getUsers = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await response.json();
+  const data = response.json();
 
   return data;
 };
 
 const getUserByID = async (id) => {
   const response = await fetch(
-    `https://jsonplaceholder.typicode.com/users/:${id}`
+    `https://jsonplaceholder.typicode.com/users/${id}`
   );
-  const data = await response.json();
+  const data = response.json();
 
   return data;
 };
 
-const createUser = async () => {};
+const createUser = async (userToAdd) => {
+  // console.log(userToAdd);
+  const response = await fetch("https://jsonplaceholder.typicode.com/users", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "foo",
+      body: "bar",
+      userId: 1,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
 
-const updateUserByID = async () => {};
+  let data = response.json();
 
-const deleteUserByID = async () => {};
+  if (data) {
+    data = "A new user has been created successfully in the database";
+  } else {
+    data = "The user couldn't be created since there was an server error";
+  }
+
+  return data;
+};
+
+/* const updateUserByID = async () => {};
+
+const deleteUserByID = async () => {}; */
 
 // Exportamos todos las funciones que serán invocadas desde 'services', entregando la información solicitada
 export default {
   getUsers,
   getUserByID,
   createUser,
-  updateUserByID,
-  deleteUserByID,
+  /*  updateUserByID,
+  deleteUserByID, */
 };
