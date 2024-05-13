@@ -8,21 +8,59 @@ requerimientos del usuario, haciendo uso de los objetos 'req' (requirement) y 'r
 //REQ vía URL => por ejemplo: req.id, req.name => via URL
 //REQ vía body => por ejemplo: req.body => si estamos haciendo un post/put/patch/delete, donde envíamos info.
 const getUsers = async (req, res) => {
-  const users = await services.getUsers();
-  res.send(users);
+  try {
+    const users = await services.getUsers();
+    res.send(users);
+  } catch (error) {
+    console.log("There was an error while obtening all users data");
+    console.log(`Server Error: [${error}]`);
+    res
+      .status(400)
+      .send(
+        "<!DOCTYPE html><html><title>400 Bad Request</title><body><h1>Page Not Found</h1></body></html>"
+      );
+  }
 };
 
 const getUserByID = async (req, res) => {
-  // El objeto 'req' contiene mucha información dentro de sí; acá sólo nos importa el ID del usuario buscado
-  const {id} = req.params;
-  const user = await services.getUserByID(id);
-  res.send(user);
+  try {
+    // El objeto 'req' contiene mucha información dentro de sí; acá sólo nos importa el ID del usuario buscado
+    const {id} = req.params;
+    const user = await services.getUserByID(id);
+
+    const isEmpty = (user) => Object.keys(user).length === 0;
+
+    if (isEmpty(user)) {
+      throw new Error(
+        "The specified user ID is incorrect, missing or has been deleted in the past"
+      );
+    }
+
+    res.send(user);
+  } catch (error) {
+    console.log(`Server Error: [${error}]`);
+    res
+      .status(404)
+      .send(
+        "<!DOCTYPE html><html><title>404 Not Found</title><body><h1>Page Not Found</h1></body></html>"
+      );
+  }
 };
 
 const createUser = async (req, res) => {
-  const userToAdd = req.body;
-  const result = await services.createUser(userToAdd);
-  res.send(result);
+  try {
+    const userToAdd = req.body;
+    const result = await services.createUser(userToAdd);
+    res.send(result);
+  } catch (error) {
+    console.log("The creation of the new user could not be completed");
+    console.log(`Error: [${error}]`);
+    res
+      .status(406)
+      .send(
+        "<!DOCTYPE html><html><title>404 Not Found</title><body><h1>Page Not Found</h1></body></html>"
+      );
+  }
 };
 
 /* const updateUserByID = async (req, res) => {};
