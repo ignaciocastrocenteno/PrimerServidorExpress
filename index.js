@@ -1,5 +1,6 @@
 // Importando el framework Express para utilizarlo dentro del archivo principal
 import express from "express";
+import router from "./src/routes/users.routes.js";
 
 // Creando el 'web server' basado en Express
 const app = express();
@@ -12,11 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // Estableciendo las 'routes' que forman parte de la API
-/* app.use("/", productsRoutes); */
+app.use("/", router);
 
 // Diciéndole al servidor web que se encuentre a la escucha de peticiones HTTP sobre el puerto 8080 local
 app.listen(PORT, () => {
-  console.log("Server already running in port localhost :8080");
+  console.log(`Server already running in port localhost ${PORT}`);
 });
 
 // Si hubiese algún problema al momento de correr el servidor web, enviamos un error por la consola
