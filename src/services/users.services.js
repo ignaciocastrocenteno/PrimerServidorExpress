@@ -15,17 +15,20 @@ const getUserByID = async (id) => {
   return user;
 };
 
-const createUser = async () => {};
+const createUser = async (userToAdd) => {
+  const result = await models.createUser(userToAdd);
+  return result;
+};
 
-const updateUserByID = async () => {};
+/* const updateUserByID = async () => {};
 
-const deleteUserByID = async () => {};
+const deleteUserByID = async () => {}; */
 
 // Exportamos todos las funciones que serán invocadas desde 'controllers' para cumplir con los requerimientos
 export default {
   getUsers,
   getUserByID,
   createUser,
-  updateUserByID,
-  deleteUserByID,
+  /*   updateUserByID,
+  deleteUserByID, */
 };
