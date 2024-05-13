@@ -1,3 +1,4 @@
+// Acá se gestionan todos los bloques try/catch, ante eventuales errores
 /* Importamos todos los servicios requeridos por cada uno de los controladores, para lograr que cumplan con sus
 objetivos: retornar la información solicitada por el usuario en cada caso. */
 import services from "../services/users.services.js";
