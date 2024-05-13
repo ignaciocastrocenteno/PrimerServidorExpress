@@ -9,11 +9,11 @@ const router = express.Router();
 
 /* Declaración de rutas para este 'endpoint' /users - El archivo 'routes' sólo se encarga de declarar
 las rutas de la entidad, no de cómo estas funcionan. */
-router.get("/users", () => controller.getUsers);
-router.get("/users/:id", () => controller.getUserByID);
-router.post("/users", () => controller.createUser);
-router.put("/users/:id", () => controller.updateUserByID);
-router.delete("/users:id", () => controller.deleteUserByID);
+router.get("/users", controller.getUsers);
+router.get("/users/:id", controller.getUserByID);
+router.post("/users", controller.createUser);
+/* router.put("/users/:id", controller.updateUserByID);
+router.delete("/users:id", controller.deleteUserByID); */
 
 // Exportando el 'router' como módulo, para ser utilizado dentro de otros módulos del proyecto
 export default router;
