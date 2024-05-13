@@ -19,17 +19,21 @@ const getUserByID = async (req, res) => {
   res.send(user);
 };
 
-const createUser = async (req, res) => {};
+const createUser = async (req, res) => {
+  const userToAdd = req.body;
+  const result = await services.createUser(userToAdd);
+  res.send(result);
+};
 
-const updateUserByID = async (req, res) => {};
+/* const updateUserByID = async (req, res) => {};
 
-const deleteUserByID = async (req, res) => {};
+const deleteUserByID = async (req, res) => {}; */
 
 // Exportamos todos las funciones que serán invocadas en 'routes' para responder la petición HTTP
 export default {
   getUsers,
   getUserByID,
   createUser,
-  updateUserByID,
-  deleteUserByID,
+  /*   updateUserByID,
+  deleteUserByID, */
 };
