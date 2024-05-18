@@ -51,13 +51,10 @@ const createUser = async (req, res) => {
   try {
     const userToAdd = req.body;
     const result = await services.createUser(userToAdd);
-    const RESULT_OUTPUT =
-      "A new user has been created successfully in the database";
-    console.log(RESULT_OUTPUT);
-    res.send({output: RESULT_OUTPUT, result});
+    res.send(result);
   } catch (error) {
     console.log("The creation of the new user could not be completed");
-    console.log(`   ---> Error: [${error}]`);
+    console.log(`Error: [${error}]`);
     res
       .status(406)
       .send(
