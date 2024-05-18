@@ -22,8 +22,8 @@ const createUser = async (userToAdd) => {
   const response = await fetch("https://jsonplaceholder.typicode.com/users", {
     method: "POST",
     body: JSON.stringify({
-      title: "foo",
-      body: "bar",
+      type: "creation-of-user",
+      userData: userToAdd,
       userId: 1,
     }),
     headers: {
@@ -32,12 +32,6 @@ const createUser = async (userToAdd) => {
   });
 
   let data = response.json();
-
-  if (data) {
-    data = "A new user has been created successfully in the database";
-  } else {
-    data = "The user couldn't be created since there was an server error";
-  }
 
   return data;
 };
