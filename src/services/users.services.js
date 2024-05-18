@@ -40,25 +40,25 @@ export default class UserServices {
   #models;
   constructor() {
     // Instanciamos los modelos de la entidad '/users' para utilizar sus métodos
-    this.models = new UserModel();
+    this.#models = new UserModel();
   }
 
   getUsers = async () => {
-    const users = await models.getUsers();
+    const users = await this.#models.getUsers();
     return users;
   };
 
   getUserByID = async (id) => {
-    const user = await models.getUserByID(id);
+    const user = await this.#models.getUserByID(id);
     return user;
   };
 
   createUser = async (userToAdd) => {
-    const result = await models.createUser(userToAdd);
+    const result = await this.#models.createUser(userToAdd);
     return result;
   };
 
-  // const updateUserByID = async () => {};
+  // updateUserByID = async () => {};
 
-  // const deleteUserByID = async () => {};
+  // deleteUserByID = async () => {};
 }

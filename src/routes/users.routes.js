@@ -13,6 +13,7 @@ las rutas de la entidad, no de cómo estas funcionan. */
 
 /* router.get("/users", controller.getUsers);
 router.get("/users/:id", controller.getUserByID);
+// Generalmente, por buenas prácticas, la creación de nuevos registros se realiza usando la misma ruta para listar todos
 router.post("/users", controller.createUser);
 router.put("/users/:id", controller.updateUserByID);
 router.delete("/users:id", controller.deleteUserByID); */
@@ -20,6 +21,7 @@ router.delete("/users:id", controller.deleteUserByID); */
 // Exportando el 'router' como módulo, para ser utilizado dentro de otros módulos del proyecto
 // export default router;
 
+// REFACTORIZACIÓN DE 'ROUTES' A CLASES ES6
 export default class UserRouter {
   #router;
   #controllers;
@@ -32,11 +34,11 @@ export default class UserRouter {
 
   // Como las rutas no son funciones, generamos un método para que se inicialicen al ser llamado el método
   start() {
-    this.#router.get("/users", controller.getUsers);
-    this.#router.get("/users/:id", controller.getUserByID);
-    this.#router.post("/users", controller.createUser);
-    this.#router.put("/users/:id", controller.updateUserByID);
-    this.#router.delete("/users:id", controller.deleteUserByID);
+    this.#router.get("/users", this.#controllers.getUsers);
+    this.#router.get("/users/:id", this.#controllers.getUserByID);
+    this.#router.post("/users", this.#controllers.createUser);
+    // this.#router.put("/users/:id", this.#controllers.updateUserByID);
+    // this.#router.delete("/users:id", this.#controllers.deleteUserByID);
 
     // Error comun: Una vez definidas las rutas para este 'endpoint', siempre devolvemos el 'router'
     return this.#router;

@@ -81,6 +81,7 @@ const createUser = async (req, res) => {
   // deleteUserByID,
 }; */
 
+// REFACTORIZACIÓN DE 'CONTROLLERS' A CLASES ES6
 export default class UserControllers {
   #services;
   constructor() {
@@ -89,11 +90,11 @@ export default class UserControllers {
 
   getUsers = async (req, res) => {
     try {
-      const users = await services.getUsers();
+      const users = await this.#services.getUsers();
       res.send(users);
     } catch (error) {
       console.log("There was an error while obtening all users data");
-      console.log(`Server Error: [${error}]`);
+      console.log(`   ---> Server Error: [${error}]`);
       res
         .status(400)
         .send(
@@ -106,7 +107,7 @@ export default class UserControllers {
     try {
       // El objeto 'req' contiene mucha información dentro de sí; acá sólo nos importa el ID del usuario buscado
       const {id} = req.params;
-      const user = await services.getUserByID(id);
+      const user = await this.#services.getUserByID(id);
 
       const isEmpty = (user) => Object.keys(user).length === 0;
 
@@ -130,11 +131,13 @@ export default class UserControllers {
   createUser = async (req, res) => {
     try {
       const userToAdd = req.body;
-      const result = await services.createUser(userToAdd);
+      const result = await this.#services.createUser(userToAdd);
       const RESULT_OUTPUT =
         "A new user has been created successfully in the database";
       console.log(RESULT_OUTPUT);
-      res.status(200).send({message: RESULT_OUTPUT, userData: result});
+      res
+        .status(200)
+        .send({statusCode: 200, message: RESULT_OUTPUT, userData: result});
     } catch (error) {
       console.log("The creation of the new user could not be completed");
       console.log(`Error: [${error}]`);
