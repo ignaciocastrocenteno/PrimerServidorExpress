@@ -2,10 +2,12 @@
 import express from "express";
 // import router from "./src/routes/users.routes.js";
 import UserRouter from "./src/routes/users.routes.js";
+import config from "./config.js";
 
 // Creando el 'web server' basado en Express
 const app = express();
-const PORT = 8080;
+// Estableciendo el puerto de conexión donde operará el 'web server'
+// const PORT = 8080;
 
 /* Middleware para trabajar con el protocolo HTTP; nos permite enviar información a través del 'body' de la petición
 - req.body */
@@ -17,8 +19,8 @@ app.use(express.urlencoded({extended: true}));
 app.use("/", new UserRouter().start());
 
 // Diciéndole al servidor web que se encuentre a la escucha de peticiones HTTP sobre el puerto 8080 local
-app.listen(PORT, () => {
-  console.log(`Server already running in port localhost ${PORT}`);
+app.listen(config.PORT, () => {
+  console.log(`Server already running in port localhost ${config.PORT}`);
 });
 
 // Si hubiese algún problema al momento de correr el servidor web, enviamos un error por la consola
