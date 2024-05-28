@@ -113,11 +113,11 @@ export default class UserControllers {
     }
   };
 
-  getUserByID = async (req, res) => {
+  getUsersByID = async (req, res) => {
     try {
       // El objeto 'req' contiene mucha información dentro de sí; acá sólo nos interesa el ID del usuario buscado
       const {id} = req.params;
-      const user = await this.#services.getUserByID(id);
+      const user = await this.#services.getUsersByID(id);
 
       if (this.checkEmptyObject(user)) {
         throw new Error(

@@ -53,7 +53,7 @@ export default class UserServices {
     return users;
   };
 
-  getUserByID = async (id) => {
+  getUsersByID = async (id) => {
     const user = await this.#models.getUsersByID(id);
     return user;
   };

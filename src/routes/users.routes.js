@@ -35,7 +35,7 @@ export default class UserRouter {
   // Como las rutas no son funciones, generamos un método para que se inicialicen al ser llamado el método
   start() {
     this.#router.get("/users", this.#controllers.getUsers);
-    this.#router.get("/users/:id", this.#controllers.getUserByID);
+    this.#router.get("/users/:id", this.#controllers.getUsersByID);
     // La ruta del POST, siempre va a tener el mismo path que el GET de todos los registros; es una convensión
     this.#router.post("/users", this.#controllers.createUser);
 

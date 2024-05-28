@@ -75,7 +75,7 @@ export default class UsersModelsMemory {
     return data;
   };
 
-  getUserByID = async (id) => {
+  getUsersByID = async (id) => {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/users/${id}`
     );
