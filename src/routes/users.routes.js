@@ -36,7 +36,9 @@ export default class UserRouter {
   start() {
     this.#router.get("/users", this.#controllers.getUsers);
     this.#router.get("/users/:id", this.#controllers.getUserByID);
+    // La ruta del POST, siempre va a tener el mismo path que el GET de todos los registros; es una convensión
     this.#router.post("/users", this.#controllers.createUser);
+
     // this.#router.put("/users/:id", this.#controllers.updateUserByID);
     // this.#router.delete("/users:id", this.#controllers.deleteUserByID);
 
