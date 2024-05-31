@@ -1,5 +1,10 @@
 // Esta capa 'services' es más que nada un "pasamanos": no maneja requerimientos ni lógica de negocio
-// Importamos los modelos que vamos a necesitar para responderle a cada controlador
+// Importamos los modelos que vamos a necesitar para responderle a cada controlador o hablamos directamente con el DAO
+/*
+  A medida que va creciendo nuestra aplicación, puede que necesitemos utilizar otras capas 'services', correspondientes a 
+  otras entidades del sistema, para poder interactuar directamente con sus métodos.
+*/
+
 // import UserModel from "../models/Users/users.memory.models.js";
 // import UserModel from "../models/Users/users.fs.models.js";
 
