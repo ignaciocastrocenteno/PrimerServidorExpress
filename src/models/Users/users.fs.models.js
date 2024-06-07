@@ -36,13 +36,13 @@ export default class UsersModelsFs {
   };
 
   createUser = async (user) => {
-    // Deserializamos el archivo 'users.json' para poder trabajar con él
+    // Deserializamos el archivo 'users.json' para poder trabajar con él, luego guardamos sus datos en una variable
     const usersArr = JSON.parse(
       await fs.promises.readFile(this.users, "utf-8")
     );
-    // Agregamos el usuario dentro de la lista
+    // Ahora que tenemos un 'JS Vanilla Object', agregamos el usuario dentro lista, sobreescribiendo el archivo original.
     usersArr.push(user);
-    // Serializamos el archivo 'user.json' para poder sobreescribir el archivo original
+    // Una vez agregado el nuevo usuario, serializamos nuevamente el archivo 'user.json' para mantener la consistencia.
     const usersJSON = JSON.stringify(usersArr);
     await fs.promises.writeFile(this.users, usersJSON);
 

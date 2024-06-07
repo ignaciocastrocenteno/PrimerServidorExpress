@@ -1,5 +1,5 @@
 const PORT = 8080;
-const PERSISTENCE_TYPE = "FS";
+const PERSISTENCE_TYPE = "MEM";
 
 export default {
   PORT,
