@@ -1,5 +1,6 @@
-import UsersModelsMemory from "../Users/users.memory.models.js";
-import UsersModelsFs from "../Users/users.fs.models.js";
+import UserMemoryModels from "../User/user.memory.models.js";
+import UserThirdPartyAPIModels from "../User/user.thirdpartyAPI.models.js";
+import UserFsModels from "../User/user.fs.models.js";
 
 /* La clase 'ModelFactory' aplica el patrón de diseño DAO (Data Access Object), para gestionar los diferentes medios
 de persistencia de datos que hay disponibles en la aplicación. Siempre que veamos este patrón aplicado a un
@@ -24,17 +25,22 @@ export default class ModelFactory {
     switch (type) {
       case "MEM":
         console.log("Persistiendo en la memoria del servidor!");
-        return new UsersModelsMemory();
+        return new UserMemoryModels();
+      case "THIRD_PARTY_API":
+        console.log("Emulando persistencia en una REST API externa!");
+        return new UserThirdPartyAPIModels();
       case "FS":
         console.log("Persistiendo sobre FileSystem (FS)");
-        return new UsersModelsFs();
-      case "MONGO_DB":
+        return new UserFsModels();
+      /* case "MONGO_DB":
         console.log("Persistiendo en la memoria de MongoDB!");
         return new ProductsModelMongo();
+      */
+
       // En caso que el input no coincida con ninguna de las persistencias disponibles, usamos la persistencia 'default'.
       default:
-        console.log("Persistiendo en la memoria default!");
-        return new ProductsModelMemory();
+        console.log("Persistiendo en la memoria default (MEMORY)!");
+        return new UserMemoryModels();
     }
   }
 }
