@@ -1,7 +1,7 @@
 // Importando el framework Express para utilizarlo dentro del archivo principal
 import express from "express";
 // import router from "./src/routes/users.routes.js";
-import UserRouter from "./src/routes/users.routes.js";
+import UserRouter from "./src/routes/user.routes.js";
 import config from "./config.js";
 
 // Creando el 'web server' basado en Express
