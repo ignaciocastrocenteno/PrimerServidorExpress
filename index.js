@@ -15,7 +15,10 @@ app.use(express.json());
 // Middleware para trabajar con datos enviados a través de URL - req.params
 app.use(express.urlencoded({extended: true}));
 
-// Estableciendo las 'routes' que forman parte de la API
+/* Estableciendo los 'endpoints' disponibles dentro de la API. Si tenemos más de una entidad dentro del sistema, para poder
+   ser accederlas a nivel URL, deben ser agregadas dentro del archivo 'index.js', como vemos acá abajo.
+*/
+// Este 'endpoint' nos da acceso a todas las rutas de la entidad 'Usuario', por medio de la instaciación de su 'router'.
 app.use("/", new UserRouter().start());
 
 // Diciéndole al servidor web que se encuentre a la escucha de peticiones HTTP sobre el puerto 8080 local
